@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance;
+
+    public SpawnMode CurrentMode { get; set; }
+
+    private float Point { get; set;  } = 0;
+
+    [SerializeField] private SpawnModeSO spawnMode;
+
+    public void Awake()
     {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeMode(SpawnMode targetMode)
     {
-        
+        CurrentMode = targetMode;
     }
+    
+    
 }

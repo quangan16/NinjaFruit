@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd25671169c34e841b160e552f282a13, type: 3}
+  m_Name: SpawnModeData
+  m_EditorClassIdentifier: 
+  spawnModes:
+  - spawnMode: 0
+    fruitPrefabs: []
+    startDelay: 1.5
+    minSpawnInterval: 0
+    maxSpawnInterval: 0
+    minForce: 0
+    maxForce: 0
+    minInitAngle: 0
+    maxInitAngle: 0
+    fruitLifetime: 0
+  - spawnMode: 1
+    fruitPrefabs: []
+    startDelay: 1
+    minSpawnInterval: 0.8
+    maxSpawnInterval: 1
+    minForce: 10
+    maxForce: 15
+    minInitAngle: 0
+    maxInitAngle: 0
+    fruitLifetime: 0
+  - spawnMode: 2
+    fruitPrefabs: []
+    startDelay: 1
+    minSpawnInterval: 0.3
+    maxSpawnInterval: 0.5
+    minForce: 10
+    maxForce: 15
+    minInitAngle: 0
+    maxInitAngle: 90
+    fruitLifetime: 0
+  - spawnMode: 3
+    fruitPrefabs: []
+    startDelay: 1
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 0
+    minForce: 0
+    maxForce: 0
+    minInitAngle: 0
+    maxInitAngle: 0
+    fruitLifetime: 0
+  - spawnMode: 4
+    fruitPrefabs: []
+    startDelay: 1
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 0.1
+    minForce: 0
+    maxForce: 0
+    minInitAngle: 0
+    maxInitAngle: 0
+    fruitLifetime: 0
