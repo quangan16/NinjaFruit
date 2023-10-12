@@ -12,54 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd25671169c34e841b160e552f282a13, type: 3}
   m_Name: SpawnModeData
   m_EditorClassIdentifier: 
-  spawnModes:
+  spawnModeData:
   - spawnMode: 0
-    fruitPrefabs: []
+    fruitPrefabs:
+    - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
+    - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
+    - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
     startDelay: 1.5
-    minSpawnInterval: 0
-    maxSpawnInterval: 0
-    minForce: 0
-    maxForce: 0
-    minInitAngle: 0
-    maxInitAngle: 0
-    fruitLifetime: 0
+    minSpawnInterval: 1
+    maxSpawnInterval: 1.5
   - spawnMode: 1
-    fruitPrefabs: []
+    fruitPrefabs:
+    - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
+    - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
+    - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
     startDelay: 1
-    minSpawnInterval: 0.8
+    minSpawnInterval: 0.7
     maxSpawnInterval: 1
-    minForce: 10
-    maxForce: 15
-    minInitAngle: 0
-    maxInitAngle: 0
-    fruitLifetime: 0
   - spawnMode: 2
-    fruitPrefabs: []
+    fruitPrefabs:
+    - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
+    - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
+    - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
     startDelay: 1
-    minSpawnInterval: 0.3
-    maxSpawnInterval: 0.5
-    minForce: 10
-    maxForce: 15
-    minInitAngle: 0
-    maxInitAngle: 90
-    fruitLifetime: 0
-  - spawnMode: 3
-    fruitPrefabs: []
-    startDelay: 1
-    minSpawnInterval: 0.1
-    maxSpawnInterval: 0
-    minForce: 0
-    maxForce: 0
-    minInitAngle: 0
-    maxInitAngle: 0
-    fruitLifetime: 0
-  - spawnMode: 4
-    fruitPrefabs: []
-    startDelay: 1
-    minSpawnInterval: 0.1
-    maxSpawnInterval: 0.1
-    minForce: 0
-    maxForce: 0
-    minInitAngle: 0
-    maxInitAngle: 0
-    fruitLifetime: 0
+    minSpawnInterval: 0.4
+    maxSpawnInterval: 0.7

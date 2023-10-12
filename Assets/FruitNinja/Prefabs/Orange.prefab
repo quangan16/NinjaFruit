@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 4531506532669519969}
   - component: {fileID: 2964125634793727210}
   - component: {fileID: 3564893464015851274}
+  - component: {fileID: 5720020241059351800}
   m_Layer: 0
   m_Name: Fruit_Whole
   m_TagString: Untagged
@@ -209,7 +210,7 @@ MeshCollider:
   m_GameObject: {fileID: 2730264799275342260}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
@@ -230,6 +231,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &5720020241059351800
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730264799275342260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: -0.00000011920929, y: 0, z: 0.00000032782555}
 --- !u!1 &2730264800654570693
 GameObject:
   m_ObjectHideFlags: 0

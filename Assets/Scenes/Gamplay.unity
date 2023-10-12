@@ -225,8 +225,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615479441}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2359212, y: 0.019, z: 0.16193867}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -4.77, z: 0}
+  m_LocalScale: {x: 4.44, y: 1, z: 2.21}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -244,6 +244,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306ec5230eefd3445960b985bd15c043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fruitPrefabs: []
+  startDelay: 1.5
+  minSpawnInterval: 0.5
+  maxSpawnInterval: 1
+  minForce: 50
+  maxForce: 100
+  minInitAngle: 15
+  maxInitAngle: 25
+  fruitLifetime: 5
 --- !u!65 &615479444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -252,7 +261,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615479441}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -448,6 +457,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b3c34062fe5da94ab26eb8ead41dd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ModeScripts: 
+  currentScript: 0
+  modeDataSO: {fileID: 11400000, guid: c19b88063c904ae49af06854c8c4c2ae, type: 2}
 --- !u!4 &795208648
 Transform:
   m_ObjectHideFlags: 0
@@ -617,7 +629,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 963194227}
-  m_PlaneDistance: 25
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
