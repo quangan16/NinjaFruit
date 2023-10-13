@@ -11,10 +11,7 @@ public class Fruits : MonoBehaviour
     [SerializeField] private GameObject wholeFruit;
 
     [SerializeField] private GameObject slicedFruit;
-
-    [SerializeField] private Rigidbody topSlicedRb;
-    [SerializeField] private Rigidbody botSliceRb;
-    [SerializeField] private Blade blade;
+    
     public void Awake()
     {
         collider = GetComponent<Collider>();
@@ -31,16 +28,17 @@ public class Fruits : MonoBehaviour
         
     }
 
-    public void OnMouseEnter()
+    public void OnMouseOver()
     {
-        Vector3 touchPosition = Input.mousePosition;
-        Vector3 touchDirection = InputManager.Instance.GetMouseDirectionNomalized();
-        Debug.Log("lol");
-            // OnSliced(Blade.Instance.sliceDirection, Blade.Instance.transform.position, Blade.Instance.sliceForce);
-            OnSliced(touchDirection, touchPosition, Blade.Instance.sliceForce);
-            // OnSliced(blade., touch.position, 5.0f);
+        Vector3 touchPosition = InputManager.Instance.GetTouchPosition();
+        Vector3 touchDirection = InputManager.Instance.GetTouchDirectionNomalized();
+        if (InputManager.Instance.GetSwipeVelocity() >= InputManager.Instance.minSwipeVelocity)
+        {
+            OnSliced(touchDirection, touchPosition, 6.0f);
             GameManager.Instance.AddPoint(1);
             UIManager.Instance.UpdatePoint();
+        }
+       
         
        
     }

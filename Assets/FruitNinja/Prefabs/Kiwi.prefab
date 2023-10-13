@@ -212,7 +212,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.2
   m_Center: {x: -0.00000011920929, y: 0, z: 0.00000032782555}
 --- !u!54 &4690994781905070565
 Rigidbody:
@@ -248,6 +248,7 @@ MonoBehaviour:
   slicedFruit: {fileID: 2730264800654570693}
   topSlicedRb: {fileID: 4025727237765302719}
   botSliceRb: {fileID: 4003652657949708378}
+  blade: {fileID: 0}
 --- !u!1 &2730264800654570693
 GameObject:
   m_ObjectHideFlags: 0

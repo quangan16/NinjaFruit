@@ -18,38 +18,62 @@ MonoBehaviour:
     - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
     - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
     - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
+    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     startDelay: 1.5
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
+    maxBurstFruits: 0
+    burstInterval: 2
   - spawnMode: 1
     fruitPrefabs:
     - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
     - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
     - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
+    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     startDelay: 5
     minSpawnInterval: 1.5
     maxSpawnInterval: 2
+    maxBurstFruits: 0
+    burstInterval: 2
   - spawnMode: 2
     fruitPrefabs:
     - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
     - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
     - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
+    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     startDelay: 5
     minSpawnInterval: 1
     maxSpawnInterval: 1.5
+    maxBurstFruits: 0
+    burstInterval: 2
   - spawnMode: 3
     fruitPrefabs:
     - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
     - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
     - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
+    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     startDelay: 5
-    minSpawnInterval: 1.5
-    maxSpawnInterval: 2
+    minSpawnInterval: 0
+    maxSpawnInterval: 0
+    maxBurstFruits: 2
+    burstInterval: 0.2
   - spawnMode: 4
     fruitPrefabs:
     - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
     - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
     - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
     startDelay: 1
-    minSpawnInterval: 0.1
-    maxSpawnInterval: 0.2
+    minSpawnInterval: 0
+    maxSpawnInterval: 0
+    maxBurstFruits: 3
+    burstInterval: 0.2
+  - spawnMode: 4
+    fruitPrefabs:
+    - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
+    - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
+    - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
+    startDelay: 1
+    minSpawnInterval: 0
+    maxSpawnInterval: 0
+    maxBurstFruits: 3
+    burstInterval: 0.2

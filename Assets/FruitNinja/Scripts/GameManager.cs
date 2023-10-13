@@ -23,12 +23,14 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         Init();
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0;
     }
 
     public void Init()
     {
         MakeSingleton();
-        ModeScripts = new int[8] { 0, 1, 2, 3, 4, 5, 5, 5, };
+        ModeScripts = new int[8] { 0, 5, 2, 3, 4, 5, 5, 5, };
         CurrentMode = SpawnMode.WARMUP;
     }
 

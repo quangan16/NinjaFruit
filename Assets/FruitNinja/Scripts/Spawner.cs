@@ -29,7 +29,9 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float fruitLifetime = 5.0f;
 
     [SerializeField] private int maxBurstFruits = 0;
-    [SerializeField] private float busrtInterval = 0;
+    [SerializeField] private float burstInterval = 0;
+
+    [SerializeField] private int currentBusrtFruits = 1;
  
 
    
@@ -71,10 +73,22 @@ public class Spawner : MonoBehaviour
             var initAngle = Quaternion.Euler(0.0f, 0.0f, CalculateAngles(spawnPosX, randomAngleOffset));
             // var initAngle = CalculateAngles(spawnPosX);
             Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, spawnPosZ);
-            if (GameManager.Instance.CurrentMode >= SpawnMode.FAST)
+            if (GameManager.Instance.CurrentMode > SpawnMode.FAST)
             {
+                if (currentBusrtFruits < maxBurstFruits)
+                {
+                    GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
+                    newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.Impulse);
+                    Destroy(newFruit, fruitLifetime);
+                    yield return new WaitForSeconds(burstInterval);
+                    currentBusrtFruits++;
+                }
+                else
+                {
+                    yield return new WaitForSeconds(3.0f);
+                    currentBusrtFruits = 0;
+                }
                 
-                yield return new WaitForSeconds(3.0f);
             }
             else
             {
@@ -84,6 +98,7 @@ public class Spawner : MonoBehaviour
             }
          
             yield return new WaitForSeconds(intervalTime);
+           
         }
         yield  break;
     }
@@ -101,7 +116,8 @@ public class Spawner : MonoBehaviour
         startDelay = GameManager.Instance.GetCurrentModeData().startDelay;
         minSpawnInterval = GameManager.Instance.GetCurrentModeData().minSpawnInterval;
         maxSpawnInterval = GameManager.Instance.GetCurrentModeData().maxSpawnInterval;
-      
+        maxBurstFruits = GameManager.Instance.GetCurrentModeData().maxBurstFruits;
+        burstInterval = GameManager.Instance.GetCurrentModeData().burstInterval;
     }
 
     public float CalculateAngles(float spawnPosX, float randomOffset)

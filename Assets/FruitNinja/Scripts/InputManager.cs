@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class InputManager : MonoBehaviour
     private Vector3 lastFrameTouchPosition;
     private Vector3 currentTouchPosition;
     [SerializeField] private Vector3 mouseDirection;
+    public double swipeVelocity = 0.0f;
+    public float minSwipeVelocity = 0.05f;
 
 
     public void MakeSingleton()
@@ -28,24 +31,30 @@ public class InputManager : MonoBehaviour
     }
     private void Start()
     {
+       
         lastFrameTouchPosition = Input.mousePosition;
         currentTouchPosition = Input.mousePosition;
+        
         mouseDirection = Vector3.zero;
+        
     }
 
     private void Update()
     {
         UpdateTouch();
+        Debug.Log(InputManager.Instance.GetSwipeVelocity());
     }
-
+    
     public void UpdateTouch()
     {
         currentTouchPosition = Input.mousePosition;
-        mouseDirection = mouseDirection = currentTouchPosition - lastFrameTouchPosition;
+        mouseDirection  = currentTouchPosition - lastFrameTouchPosition;
+        swipeVelocity = mouseDirection.magnitude / Time.deltaTime;
         lastFrameTouchPosition = currentTouchPosition;
+       
     }
 
-    public Vector3 GetMouseDirectionNomalized()
+    public Vector3 GetTouchDirectionNomalized()
     {
         return mouseDirection.normalized;
     }
@@ -53,6 +62,11 @@ public class InputManager : MonoBehaviour
     public Vector3 GetTouchPosition()
     {
         return currentTouchPosition;
+    }
+
+    public double GetSwipeVelocity()
+    {
+        return swipeVelocity;
     }
     
     

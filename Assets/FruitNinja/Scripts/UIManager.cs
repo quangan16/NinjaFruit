@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     
     
     [SerializeField] private Text pointTxt;
-
+    
     public void Awake()
     {
         SetSingleton();
