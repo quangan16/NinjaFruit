@@ -18,28 +18,36 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float minSpawnInterval = 0.5f;
     [SerializeField] private float maxSpawnInterval = 1.0f;
 
-    [Space(10)] [SerializeField] private float minForce = 50.0f;
-    [SerializeField] private float maxForce = 100.0f;
+    [Space(10)]
+    [SerializeField] private float minForce = 500.0f;
+    [SerializeField] private float maxForce = 1000.0f;
 
-    [Header("Fruit properties")] [Space(10)] [SerializeField]
-    private float minInitAngle = 15.0f;
-
+    [Space(10)] 
+    [Header("Fruit properties")] 
+    [SerializeField]private float minInitAngle = 15.0f;
     [SerializeField] private float maxInitAngle = 25.0f;
     [SerializeField] private float fruitLifetime = 5.0f;
 
+    [SerializeField] private int maxBurstFruits = 0;
+    [SerializeField] private float busrtInterval = 0;
  
 
    
     public void Awake()
     {
         spawnArea = GetComponent<BoxCollider>();
-        UpdateData();
+        
     }
+
+   
     
-    public void OnEnable()
+    public void Start()
     {
         GameManager.Instance.OnModeChanged += OnModeChange;
+        UpdateData();
         StartCoroutine(Spawn());
+        
+
     }
 
     public void OnDisable()
@@ -59,10 +67,22 @@ public class Spawner : MonoBehaviour
             var spawnPosZ = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z);
             var intervalTime = Random.Range(minSpawnInterval, maxSpawnInterval);
             var shootForce = Random.Range(minForce, maxForce);
-            var initAngle = Quaternion.Euler(0.0f, 0.0f, Random.Range(minInitAngle, maxInitAngle));
+            var randomAngleOffset = Random.Range(minInitAngle, maxInitAngle);
+            var initAngle = Quaternion.Euler(0.0f, 0.0f, CalculateAngles(spawnPosX, randomAngleOffset));
+            // var initAngle = CalculateAngles(spawnPosX);
             Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, spawnPosZ);
-            GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
-            Destroy(newFruit, fruitLifetime);
+            if (GameManager.Instance.CurrentMode >= SpawnMode.FAST)
+            {
+                
+                yield return new WaitForSeconds(3.0f);
+            }
+            else
+            {
+                GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
+                newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.Impulse);
+                Destroy(newFruit, fruitLifetime);
+            }
+         
             yield return new WaitForSeconds(intervalTime);
         }
         yield  break;
@@ -70,8 +90,9 @@ public class Spawner : MonoBehaviour
 
     public void OnModeChange(SpawnMode mode)
     {
-        // StopAllCoroutines();
+        StopAllCoroutines();
         UpdateData();
+        StartCoroutine(Spawn());
     }
 
     public void UpdateData()
@@ -81,6 +102,26 @@ public class Spawner : MonoBehaviour
         minSpawnInterval = GameManager.Instance.GetCurrentModeData().minSpawnInterval;
         maxSpawnInterval = GameManager.Instance.GetCurrentModeData().maxSpawnInterval;
       
+    }
+
+    public float CalculateAngles(float spawnPosX, float randomOffset)
+    {
+        float angle;
+        if (spawnPosX < 0)
+        {
+            angle = Random.Range(0.0f, spawnPosX - randomOffset);
+        }
+        else if (spawnPosX > 0)
+        {
+            angle = Random.Range(0.0f, spawnPosX + randomOffset);
+        }
+        else
+        {
+            angle = Random.Range(-randomOffset, randomOffset);
+        }
+
+
+        return angle;
     }
 
     

@@ -19,21 +19,37 @@ MonoBehaviour:
     - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
     - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
     startDelay: 1.5
-    minSpawnInterval: 1
-    maxSpawnInterval: 1.5
+    minSpawnInterval: 2
+    maxSpawnInterval: 2.5
   - spawnMode: 1
     fruitPrefabs:
     - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
     - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
     - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
-    startDelay: 1
-    minSpawnInterval: 0.7
-    maxSpawnInterval: 1
+    startDelay: 5
+    minSpawnInterval: 1.5
+    maxSpawnInterval: 2
   - spawnMode: 2
     fruitPrefabs:
     - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
     - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
     - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
+    startDelay: 5
+    minSpawnInterval: 1
+    maxSpawnInterval: 1.5
+  - spawnMode: 3
+    fruitPrefabs:
+    - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
+    - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
+    - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
+    startDelay: 5
+    minSpawnInterval: 1.5
+    maxSpawnInterval: 2
+  - spawnMode: 4
+    fruitPrefabs:
+    - {fileID: 2964125634958353353, guid: a6914bd328e42e44f8f475d4079c7d3a, type: 3}
+    - {fileID: 2964125634958353353, guid: 34f10ac2b087869479675c80e988e1d4, type: 3}
+    - {fileID: 2964125634958353353, guid: 9c59e252cf6d44346af4ef99ca06b4ef, type: 3}
     startDelay: 1
-    minSpawnInterval: 0.4
-    maxSpawnInterval: 0.7
+    minSpawnInterval: 0.1
+    maxSpawnInterval: 0.2

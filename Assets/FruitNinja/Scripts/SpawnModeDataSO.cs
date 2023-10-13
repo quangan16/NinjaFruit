@@ -19,7 +19,9 @@ public class SpawnModeData
     public float minSpawnInterval = 0.5f;
     public float maxSpawnInterval = 1.0f;
 
-   
+    public float maxBurstFruits = 0;
+    public float burstInterval = 2.0f;
+
 }
 
 public enum SpawnMode

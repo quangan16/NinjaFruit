@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,15 +8,15 @@ using UnityEngine.Serialization;
 public class GameManager : MonoBehaviour
 {
 
-    public UnityAction<SpawnMode> OnModeChanged;
+   
     public static GameManager Instance;
-    public SpawnMode CurrentMode { get; set; }
-    
+    public SpawnMode CurrentMode;
+    public event Action<SpawnMode> OnModeChanged;
 
-    public float Point  = 0;
+    public int Point  = 0;
 
     public int[] ModeScripts;
-    public int currentScript;
+    public int currentScript = 0;
 
     public SpawnModeDataSO modeDataSO;
 
@@ -45,8 +46,13 @@ public class GameManager : MonoBehaviour
 
     public void ChangeMode(SpawnMode targetMode)
     {
-        CurrentMode = targetMode;
-        OnModeChanged?.Invoke(targetMode);
+        if (CurrentMode != targetMode)
+        {
+            CurrentMode = targetMode;
+            OnModeChanged?.Invoke(targetMode);
+            Debug.Log($"Mode changed to {targetMode}");
+        }
+       
     }
 
 
@@ -57,20 +63,18 @@ public class GameManager : MonoBehaviour
 
     public void UpdateModeByPoint()
     {
-        currentScript = 0;
-        if (currentScript / ModeScripts.Length - 1 <= 1)
+      
+        if (currentScript / ModeScripts.Length - 1 < 1)
         {
-            if (Point % 10 == 0)
+            if (Point > 0 && Point / 10 > currentScript )
             {
                 ChangeMode((SpawnMode)ModeScripts[++currentScript]);
             }
-
-            else
-            {
-                currentScript = 2;
-            }
-
-
+            
+        }
+        else
+        {
+            currentScript = 2;
         }
 
     }
@@ -78,5 +82,15 @@ public class GameManager : MonoBehaviour
     public SpawnModeData GetCurrentModeData()
     {
         return modeDataSO.spawnModeData[(int)CurrentMode];
+    }
+
+    public void AddPoint(int point)
+    {
+        Point += point;
+    }
+
+    public int GetCurrentPoint()
+    {
+        return Point;
     }
 }
