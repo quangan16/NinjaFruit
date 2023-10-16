@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     
     
     [SerializeField] private Text pointTxt;
+    [SerializeField] private Text comboTxt;
     
     public void Awake()
     {
@@ -31,5 +32,12 @@ public class UIManager : MonoBehaviour
     public void UpdatePoint()
     {
         pointTxt.text = GameManager.Instance.GetCurrentPoint().ToString();
+    }
+
+    public void ShowComboText(int combos)
+    {
+        Vector3 comboDisPlayOffset = new Vector3(15.0f, 0.0f, 0.0f);
+        comboTxt.transform.position = InputManager.Instance.GetTouchPosition() + comboDisPlayOffset;
+        comboTxt.text = "Combo x" + combos;
     }
 }

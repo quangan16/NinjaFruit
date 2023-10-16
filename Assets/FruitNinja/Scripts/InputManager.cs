@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         UpdateTouch();
-        Debug.Log(InputManager.Instance.GetSwipeVelocity());
+        // Debug.Log(InputManager.Instance.GetSwipeVelocity());
     }
     
     public void UpdateTouch()

@@ -70,7 +70,8 @@ public class Spawner : MonoBehaviour
             var intervalTime = Random.Range(minSpawnInterval, maxSpawnInterval);
             var shootForce = Random.Range(minForce, maxForce);
             var randomAngleOffset = Random.Range(minInitAngle, maxInitAngle);
-            var initAngle = Quaternion.Euler(0.0f, 0.0f, CalculateAngles(spawnPosX, randomAngleOffset));
+            var initAngle = Quaternion.Euler(fruitPrefab.transform.rotation.eulerAngles.x,
+                fruitPrefab.transform.rotation.eulerAngles.y, CalculateAngles(spawnPosX, randomAngleOffset));
             // var initAngle = CalculateAngles(spawnPosX);
             Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, spawnPosZ);
             if (GameManager.Instance.CurrentMode > SpawnMode.FAST)
@@ -78,14 +79,15 @@ public class Spawner : MonoBehaviour
                 if (currentBusrtFruits < maxBurstFruits)
                 {
                     GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
-                    newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.Impulse);
+                    newFruit.GetComponent<Rigidbody>().AddForce(Vector3.up * shootForce, ForceMode.Impulse);
+                    newFruit.GetComponent<Rigidbody>().AddTorque(newFruit.transform.forward * initAngle.z*  shootForce * 5, ForceMode.Impulse);
                     Destroy(newFruit, fruitLifetime);
                     yield return new WaitForSeconds(burstInterval);
                     currentBusrtFruits++;
                 }
                 else
                 {
-                    yield return new WaitForSeconds(3.0f);
+                    yield return new WaitForSeconds(intervalTime);
                     currentBusrtFruits = 0;
                 }
                 
@@ -94,10 +96,13 @@ public class Spawner : MonoBehaviour
             {
                 GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
                 newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.Impulse);
+                newFruit.GetComponent<Rigidbody>()
+                    .AddTorque(newFruit.transform.forward * initAngle.z* shootForce * 5, ForceMode.Impulse);
                 Destroy(newFruit, fruitLifetime);
+                yield return new WaitForSeconds(intervalTime);
             }
          
-            yield return new WaitForSeconds(intervalTime);
+          
            
         }
         yield  break;
@@ -120,6 +125,7 @@ public class Spawner : MonoBehaviour
         burstInterval = GameManager.Instance.GetCurrentModeData().burstInterval;
     }
 
+   
     public float CalculateAngles(float spawnPosX, float randomOffset)
     {
         float angle;

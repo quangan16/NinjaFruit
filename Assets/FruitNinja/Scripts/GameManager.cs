@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     public SpawnModeDataSO modeDataSO;
 
+    public int combo;
+    public float comboCountdown = 1.0f;
+
     public void Awake()
     {
         Init();
@@ -27,11 +31,14 @@ public class GameManager : MonoBehaviour
         QualitySettings.vSyncCount = 0;
     }
 
+    public int targetPoint = 0;
+
     public void Init()
     {
         MakeSingleton();
-        ModeScripts = new int[8] { 0, 5, 2, 3, 4, 5, 5, 5, };
+        ModeScripts = new int[8] { 0, 1, 2, 3, 4, 5, 5, 5, };
         CurrentMode = SpawnMode.WARMUP;
+        targetPoint += modeDataSO.spawnModeData[(int)CurrentMode].pointToPass;
     }
 
     public void MakeSingleton()
@@ -52,7 +59,7 @@ public class GameManager : MonoBehaviour
         {
             CurrentMode = targetMode;
             OnModeChanged?.Invoke(targetMode);
-            Debug.Log($"Mode changed to {targetMode}");
+            // Debug.Log($"Mode changed to {targetMode}");
         }
        
     }
@@ -65,20 +72,22 @@ public class GameManager : MonoBehaviour
 
     public void UpdateModeByPoint()
     {
-      
-        if (currentScript / ModeScripts.Length - 1 < 1)
+        if (Point <= 90)
         {
-            if (Point > 0 && Point / 10 > currentScript )
+            if (Point >= targetPoint)
             {
-                ChangeMode((SpawnMode)ModeScripts[++currentScript]);
+                targetPoint = Point + modeDataSO.spawnModeData[(int)CurrentMode].pointToPass;
+                currentScript++;
             }
-            
         }
-        else
-        {
-            currentScript = 2;
-        }
+     
 
+      else
+      {
+          currentScript = (int)SpawnMode.CRAZY;
+      }
+
+      ChangeMode((SpawnMode)ModeScripts[currentScript]);
     }
 
     public SpawnModeData GetCurrentModeData()
@@ -95,4 +104,27 @@ public class GameManager : MonoBehaviour
     {
         return Point;
     }
+
+    public IEnumerator ShowCombo()
+    {
+        StopAllCoroutines();
+        while (comboCountdown > 0 && combo >= 1)
+        {
+            comboCountdown -= Time.deltaTime;
+            if (combo >= 3)
+            {
+                Debug.Log("hehe");
+                UIManager.Instance.ShowComboText(combo);
+                comboCountdown += 5.0f;
+               
+            }
+
+            yield return null;
+        }
+
+        combo = 0;
+        comboCountdown = 1.0f;
+        yield break;
+    }
+    
 }

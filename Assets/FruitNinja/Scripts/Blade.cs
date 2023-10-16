@@ -3,10 +3,12 @@
 
 public class Blade : MonoBehaviour
 {
+   [SerializeField] private TrailRenderer trail;
    public void Update()
    {
       UpdatePosition();
    }
+    
 
    public void UpdatePosition()
    {
