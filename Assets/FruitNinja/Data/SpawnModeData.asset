@@ -19,7 +19,7 @@ MonoBehaviour:
     - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     minForce: 40
-    maxForce: 60
+    maxForce: 100
     startDelay: 1.5
     minSpawnInterval: 2
     maxSpawnInterval: 2.5

@@ -24,8 +24,8 @@ public class Spawner : MonoBehaviour
 
     [Space(10)] 
     [Header("Fruit properties")] 
-    [SerializeField]private float minInitAngle = 15.0f;
-    [SerializeField] private float maxInitAngle = 25.0f;
+    [SerializeField]private float minInitAngle = 5.0f;
+    [SerializeField] private float maxInitAngle = 15.0f;
     [SerializeField] private float fruitLifetime = 5.0f;
 
     [SerializeField] private int maxBurstFruits = 0;
@@ -79,7 +79,7 @@ public class Spawner : MonoBehaviour
                 if (currentBusrtFruits < maxBurstFruits)
                 {
                     GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
-                    newFruit.GetComponent<Rigidbody>().AddForce(Vector3.up * shootForce, ForceMode.VelocityChange);
+                    newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.VelocityChange);
                     newFruit.GetComponent<Rigidbody>().AddTorque(newFruit.transform.forward * initAngle.z*  shootForce * 3, ForceMode.VelocityChange);
                     Destroy(newFruit, fruitLifetime);
                     yield return new WaitForSeconds(burstInterval);
