@@ -79,8 +79,8 @@ public class Spawner : MonoBehaviour
                 if (currentBusrtFruits < maxBurstFruits)
                 {
                     GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
-                    newFruit.GetComponent<Rigidbody>().AddForce(Vector3.up * shootForce, ForceMode.Impulse);
-                    newFruit.GetComponent<Rigidbody>().AddTorque(newFruit.transform.forward * initAngle.z*  shootForce * 5, ForceMode.Impulse);
+                    newFruit.GetComponent<Rigidbody>().AddForce(Vector3.up * shootForce, ForceMode.VelocityChange);
+                    newFruit.GetComponent<Rigidbody>().AddTorque(newFruit.transform.forward * initAngle.z*  shootForce * 3, ForceMode.VelocityChange);
                     Destroy(newFruit, fruitLifetime);
                     yield return new WaitForSeconds(burstInterval);
                     currentBusrtFruits++;
@@ -95,9 +95,9 @@ public class Spawner : MonoBehaviour
             else
             {
                 GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
-                newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.Impulse);
+                newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.VelocityChange);
                 newFruit.GetComponent<Rigidbody>()
-                    .AddTorque(newFruit.transform.forward * initAngle.z* shootForce * 5, ForceMode.Impulse);
+                    .AddTorque(newFruit.transform.forward * initAngle.z * shootForce * 3, ForceMode.Impulse);
                 Destroy(newFruit, fruitLifetime);
                 yield return new WaitForSeconds(intervalTime);
             }
@@ -119,6 +119,8 @@ public class Spawner : MonoBehaviour
     {
         fruitPrefabs = GameManager.Instance.GetCurrentModeData().fruitPrefabs;
         startDelay = GameManager.Instance.GetCurrentModeData().startDelay;
+        minForce = GameManager.Instance.GetCurrentModeData().minForce;
+        maxForce = GameManager.Instance.GetCurrentModeData().maxForce;
         minSpawnInterval = GameManager.Instance.GetCurrentModeData().minSpawnInterval;
         maxSpawnInterval = GameManager.Instance.GetCurrentModeData().maxSpawnInterval;
         maxBurstFruits = GameManager.Instance.GetCurrentModeData().maxBurstFruits;

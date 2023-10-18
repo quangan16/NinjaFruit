@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     
     
     [SerializeField] private Text pointTxt;
-    [SerializeField] private Text comboTxt;
+    [SerializeField] private GameObject comboTxtPrefab;
     
     public void Awake()
     {
@@ -36,8 +36,9 @@ public class UIManager : MonoBehaviour
 
     public void ShowComboText(int combos)
     {
-        Vector3 comboDisPlayOffset = new Vector3(15.0f, 0.0f, 0.0f);
-        comboTxt.transform.position = InputManager.Instance.GetTouchPosition() + comboDisPlayOffset;
-        comboTxt.text = "Combo x" + combos;
+        GameManager.Instance.check = true;
+        // Vector3 comboDisPlayOffset = new Vector3(15.0f, 0.0f, 0.0f);
+        Vector3 comboTxtPos = GameManager.Instance.GetLastFruitComboPos();
+        Instantiate(comboTxtPrefab, comboTxtPos, Quaternion.identity, gameObject.transform);
     }
 }

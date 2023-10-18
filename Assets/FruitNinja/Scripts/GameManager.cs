@@ -21,14 +21,23 @@ public class GameManager : MonoBehaviour
 
     public SpawnModeDataSO modeDataSO;
 
+    public bool isCutting;
+
     public int combo;
     public float comboCountdown = 1.0f;
-
+    public Vector3 lastFruitHitPos;
+    public bool check = false;
     public void Awake()
     {
         Init();
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
+        Physics.gravity = new Vector3(0.0f, -35.0f, 0.0f);
+    }
+
+    public void OnDestroy()
+    {
+        Physics.gravity = new Vector3(0.0f, -9.81f, 0.0f);
     }
 
     public int targetPoint = 0;
@@ -107,24 +116,31 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator ShowCombo()
     {
-        StopAllCoroutines();
-        while (comboCountdown > 0 && combo >= 1)
+
+
+        while (comboCountdown > 0)
         {
             comboCountdown -= Time.deltaTime;
-            if (combo >= 3)
-            {
-                Debug.Log("hehe");
-                UIManager.Instance.ShowComboText(combo);
-                comboCountdown += 5.0f;
-               
-            }
-
             yield return null;
         }
 
+        if (combo >= 3)
+        {
+            UIManager.Instance.ShowComboText(combo);
+            
+        }
+       
         combo = 0;
         comboCountdown = 1.0f;
+        check = false;
         yield break;
     }
     
+
+    public Vector3 GetLastFruitComboPos()
+    {
+        return lastFruitHitPos;
+    }
+
+
 }

@@ -15,15 +15,17 @@ MonoBehaviour:
   spawnModeData:
   - spawnMode: 0
     fruitPrefabs:
-    - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
-    minForce: 500
-    maxForce: 800
+    - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
+    - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
+    - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
+    minForce: 40
+    maxForce: 60
     startDelay: 1.5
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
     maxBurstFruits: 0
     burstInterval: 2
-    pointToPass: 25
+    pointToPass: 20
   - spawnMode: 1
     fruitPrefabs:
     - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
@@ -41,8 +43,8 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 500
-    maxForce: 800
+    minForce: 40
+    maxForce: 60
     startDelay: 2
     minSpawnInterval: 1.5
     maxSpawnInterval: 2
@@ -66,8 +68,8 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 500
-    maxForce: 800
+    minForce: 40
+    maxForce: 60
     startDelay: 2
     minSpawnInterval: 1
     maxSpawnInterval: 1.5
@@ -91,8 +93,8 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 600
-    maxForce: 800
+    minForce: 40
+    maxForce: 60
     startDelay: 2
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
@@ -116,8 +118,8 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 500
-    maxForce: 700
+    minForce: 40
+    maxForce: 60
     startDelay: 2
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
@@ -141,8 +143,8 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 500
-    maxForce: 700
+    minForce: 40
+    maxForce: 60
     startDelay: 1
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
