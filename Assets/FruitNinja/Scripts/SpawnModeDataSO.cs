@@ -13,10 +13,13 @@ public class SpawnModeData
     [Header("Spawner properties")] 
     public SpawnMode spawnMode;
     public GameObject[] fruitPrefabs;
+    public GameObject[] bombPrefabs;
 
 
-    public float minForce = 500.0f;
-    public float maxForce = 1000.0f;
+    public float minForce = 60.0f;
+    public float maxForce = 100.0f;
+    public float minSideForce = 80.0f;
+    public float maxSideForce = 120.0f;
     public float startDelay = 1.5f;
     public float minSpawnInterval = 0.5f;
     public float maxSpawnInterval = 1.0f;
@@ -24,6 +27,7 @@ public class SpawnModeData
     public int maxBurstFruits = 0;
     public float burstInterval = 2.0f;
     public int pointToPass = 5;
+    
 
 }
 
@@ -31,10 +35,10 @@ public enum SpawnMode
 {
     WARMUP,
     SLOW,
-    FAST,
     BURST_2,
+    FAST,
     BURST_3,
     BURST_4,
-    CRAZY
+    CRAZY,
 
 }

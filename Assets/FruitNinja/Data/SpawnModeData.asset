@@ -15,64 +15,44 @@ MonoBehaviour:
   spawnModeData:
   - spawnMode: 0
     fruitPrefabs:
-    - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
-    - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
-    - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
-    minForce: 40
-    maxForce: 100
+    - {fileID: 3918633599445052286, guid: 53b53d1715e96f446b1d152968eb98bc, type: 3}
+    bombPrefabs:
+    - {fileID: 4705148494986364083, guid: 402617193110fc64da6b5b1a8f4a5a5f, type: 3}
+    minForce: 60
+    maxForce: 80
+    minSideForce: 0
+    maxSideForce: 0
     startDelay: 1.5
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
     maxBurstFruits: 0
     burstInterval: 2
-    pointToPass: 20
+    pointToPass: 5
   - spawnMode: 1
     fruitPrefabs:
     - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
     - {fileID: 8286337982485620109, guid: 736fe6c1107c9b34aa6d7b102278ff0c, type: 3}
-    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     - {fileID: 1793507787737797879, guid: 2a7cb03a2ffce9a43ab5e89f16e3248f, type: 3}
     - {fileID: 8859407086010814285, guid: 7dbda09de1424b74abed4d981314d993, type: 3}
     - {fileID: 7672316766471439883, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
     - {fileID: 3918633599445052286, guid: 53b53d1715e96f446b1d152968eb98bc, type: 3}
-    - {fileID: 2333795617057604000, guid: ac4ec84723542f644aa8f3e87867a6b0, type: 3}
-    - {fileID: 5608071730056513626, guid: 9291ceba9c3eb124f885b6263620f7ca, type: 3}
+    - {fileID: 8407587434860164419, guid: 7b8fa461e44e1274e9c5cb3b0bb82d71, type: 3}
+    - {fileID: 8407587434860164419, guid: 2c5045e395ef6674ea60bbb86ae1d4a9, type: 3}
     - {fileID: 3829227900248608394, guid: 6966bdbfe62dc984fb3b77867c7c82a9, type: 3}
     - {fileID: 4877754562957024097, guid: be75bb1191826174d9875c809213d19b, type: 3}
     - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 40
-    maxForce: 60
+    bombPrefabs:
+    - {fileID: 4705148494986364083, guid: 402617193110fc64da6b5b1a8f4a5a5f, type: 3}
+    minForce: 60
+    maxForce: 80
+    minSideForce: 0
+    maxSideForce: 0
     startDelay: 2
     minSpawnInterval: 1.5
     maxSpawnInterval: 2
-    maxBurstFruits: 0
-    burstInterval: 2
-    pointToPass: 10
-  - spawnMode: 2
-    fruitPrefabs:
-    - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
-    - {fileID: 8286337982485620109, guid: 736fe6c1107c9b34aa6d7b102278ff0c, type: 3}
-    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
-    - {fileID: 1793507787737797879, guid: 2a7cb03a2ffce9a43ab5e89f16e3248f, type: 3}
-    - {fileID: 8859407086010814285, guid: 7dbda09de1424b74abed4d981314d993, type: 3}
-    - {fileID: 7672316766471439883, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
-    - {fileID: 3918633599445052286, guid: 53b53d1715e96f446b1d152968eb98bc, type: 3}
-    - {fileID: 2333795617057604000, guid: ac4ec84723542f644aa8f3e87867a6b0, type: 3}
-    - {fileID: 5608071730056513626, guid: 9291ceba9c3eb124f885b6263620f7ca, type: 3}
-    - {fileID: 3829227900248608394, guid: 6966bdbfe62dc984fb3b77867c7c82a9, type: 3}
-    - {fileID: 4877754562957024097, guid: be75bb1191826174d9875c809213d19b, type: 3}
-    - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
-    - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
-    - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
-    - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 40
-    maxForce: 60
-    startDelay: 2
-    minSpawnInterval: 1
-    maxSpawnInterval: 1.5
     maxBurstFruits: 0
     burstInterval: 2
     pointToPass: 10
@@ -80,74 +60,139 @@ MonoBehaviour:
     fruitPrefabs:
     - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
     - {fileID: 8286337982485620109, guid: 736fe6c1107c9b34aa6d7b102278ff0c, type: 3}
-    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     - {fileID: 1793507787737797879, guid: 2a7cb03a2ffce9a43ab5e89f16e3248f, type: 3}
     - {fileID: 8859407086010814285, guid: 7dbda09de1424b74abed4d981314d993, type: 3}
     - {fileID: 7672316766471439883, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
     - {fileID: 3918633599445052286, guid: 53b53d1715e96f446b1d152968eb98bc, type: 3}
-    - {fileID: 2333795617057604000, guid: ac4ec84723542f644aa8f3e87867a6b0, type: 3}
-    - {fileID: 5608071730056513626, guid: 9291ceba9c3eb124f885b6263620f7ca, type: 3}
+    - {fileID: 8407587434860164419, guid: 7b8fa461e44e1274e9c5cb3b0bb82d71, type: 3}
+    - {fileID: 8407587434860164419, guid: 2c5045e395ef6674ea60bbb86ae1d4a9, type: 3}
     - {fileID: 3829227900248608394, guid: 6966bdbfe62dc984fb3b77867c7c82a9, type: 3}
     - {fileID: 4877754562957024097, guid: be75bb1191826174d9875c809213d19b, type: 3}
     - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
+    bombPrefabs:
+    - {fileID: 4705148494986364083, guid: 402617193110fc64da6b5b1a8f4a5a5f, type: 3}
     minForce: 40
     maxForce: 60
+    minSideForce: 80
+    maxSideForce: 120
     startDelay: 2
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
     maxBurstFruits: 2
     burstInterval: 0.2
-    pointToPass: 8
-  - spawnMode: 4
+    pointToPass: 12
+  - spawnMode: 2
     fruitPrefabs:
     - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
     - {fileID: 8286337982485620109, guid: 736fe6c1107c9b34aa6d7b102278ff0c, type: 3}
-    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     - {fileID: 1793507787737797879, guid: 2a7cb03a2ffce9a43ab5e89f16e3248f, type: 3}
     - {fileID: 8859407086010814285, guid: 7dbda09de1424b74abed4d981314d993, type: 3}
     - {fileID: 7672316766471439883, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
     - {fileID: 3918633599445052286, guid: 53b53d1715e96f446b1d152968eb98bc, type: 3}
-    - {fileID: 2333795617057604000, guid: ac4ec84723542f644aa8f3e87867a6b0, type: 3}
-    - {fileID: 5608071730056513626, guid: 9291ceba9c3eb124f885b6263620f7ca, type: 3}
+    - {fileID: 8407587434860164419, guid: 7b8fa461e44e1274e9c5cb3b0bb82d71, type: 3}
+    - {fileID: 8407587434860164419, guid: 2c5045e395ef6674ea60bbb86ae1d4a9, type: 3}
     - {fileID: 3829227900248608394, guid: 6966bdbfe62dc984fb3b77867c7c82a9, type: 3}
     - {fileID: 4877754562957024097, guid: be75bb1191826174d9875c809213d19b, type: 3}
     - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
+    bombPrefabs:
+    - {fileID: 4705148494986364083, guid: 402617193110fc64da6b5b1a8f4a5a5f, type: 3}
     minForce: 40
     maxForce: 60
+    minSideForce: 80
+    maxSideForce: 120
+    startDelay: 2
+    minSpawnInterval: 1
+    maxSpawnInterval: 1.5
+    maxBurstFruits: 0
+    burstInterval: 2
+    pointToPass: 10
+  - spawnMode: 4
+    fruitPrefabs:
+    - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
+    - {fileID: 8286337982485620109, guid: 736fe6c1107c9b34aa6d7b102278ff0c, type: 3}
+    - {fileID: 1793507787737797879, guid: 2a7cb03a2ffce9a43ab5e89f16e3248f, type: 3}
+    - {fileID: 8859407086010814285, guid: 7dbda09de1424b74abed4d981314d993, type: 3}
+    - {fileID: 7672316766471439883, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
+    - {fileID: 3918633599445052286, guid: 53b53d1715e96f446b1d152968eb98bc, type: 3}
+    - {fileID: 8407587434860164419, guid: 7b8fa461e44e1274e9c5cb3b0bb82d71, type: 3}
+    - {fileID: 8407587434860164419, guid: 2c5045e395ef6674ea60bbb86ae1d4a9, type: 3}
+    - {fileID: 3829227900248608394, guid: 6966bdbfe62dc984fb3b77867c7c82a9, type: 3}
+    - {fileID: 4877754562957024097, guid: be75bb1191826174d9875c809213d19b, type: 3}
+    - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
+    - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
+    - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
+    - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
+    bombPrefabs:
+    - {fileID: 4705148494986364083, guid: 402617193110fc64da6b5b1a8f4a5a5f, type: 3}
+    minForce: 40
+    maxForce: 60
+    minSideForce: 0
+    maxSideForce: 0
     startDelay: 2
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
     maxBurstFruits: 3
     burstInterval: 0.2
-    pointToPass: 15
+    pointToPass: 12
   - spawnMode: 5
     fruitPrefabs:
     - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
     - {fileID: 8286337982485620109, guid: 736fe6c1107c9b34aa6d7b102278ff0c, type: 3}
-    - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     - {fileID: 1793507787737797879, guid: 2a7cb03a2ffce9a43ab5e89f16e3248f, type: 3}
     - {fileID: 8859407086010814285, guid: 7dbda09de1424b74abed4d981314d993, type: 3}
     - {fileID: 7672316766471439883, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
     - {fileID: 3918633599445052286, guid: 53b53d1715e96f446b1d152968eb98bc, type: 3}
-    - {fileID: 2333795617057604000, guid: ac4ec84723542f644aa8f3e87867a6b0, type: 3}
-    - {fileID: 5608071730056513626, guid: 9291ceba9c3eb124f885b6263620f7ca, type: 3}
+    - {fileID: 8407587434860164419, guid: 7b8fa461e44e1274e9c5cb3b0bb82d71, type: 3}
+    - {fileID: 8407587434860164419, guid: 2c5045e395ef6674ea60bbb86ae1d4a9, type: 3}
     - {fileID: 3829227900248608394, guid: 6966bdbfe62dc984fb3b77867c7c82a9, type: 3}
     - {fileID: 4877754562957024097, guid: be75bb1191826174d9875c809213d19b, type: 3}
     - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 40
-    maxForce: 60
+    bombPrefabs:
+    - {fileID: 4705148494986364083, guid: 402617193110fc64da6b5b1a8f4a5a5f, type: 3}
+    minForce: 50
+    maxForce: 70
+    minSideForce: 0
+    maxSideForce: 0
     startDelay: 1
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
     maxBurstFruits: 4
     burstInterval: 0.2
+    pointToPass: 20
+  - spawnMode: 6
+    fruitPrefabs:
+    - {fileID: 1594548438794295472, guid: e5833c033955c7743a5e06f09d0b082f, type: 3}
+    - {fileID: 8286337982485620109, guid: 736fe6c1107c9b34aa6d7b102278ff0c, type: 3}
+    - {fileID: 1793507787737797879, guid: 2a7cb03a2ffce9a43ab5e89f16e3248f, type: 3}
+    - {fileID: 8859407086010814285, guid: 7dbda09de1424b74abed4d981314d993, type: 3}
+    - {fileID: 7672316766471439883, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
+    - {fileID: 3918633599445052286, guid: 53b53d1715e96f446b1d152968eb98bc, type: 3}
+    - {fileID: 8407587434860164419, guid: 7b8fa461e44e1274e9c5cb3b0bb82d71, type: 3}
+    - {fileID: 8407587434860164419, guid: 2c5045e395ef6674ea60bbb86ae1d4a9, type: 3}
+    - {fileID: 3829227900248608394, guid: 6966bdbfe62dc984fb3b77867c7c82a9, type: 3}
+    - {fileID: 4877754562957024097, guid: be75bb1191826174d9875c809213d19b, type: 3}
+    - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
+    - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
+    - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
+    - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
+    bombPrefabs:
+    - {fileID: 4705148494986364083, guid: 402617193110fc64da6b5b1a8f4a5a5f, type: 3}
+    minForce: 0
+    maxForce: 0
+    minSideForce: 80
+    maxSideForce: 120
+    startDelay: 1.5
+    minSpawnInterval: 0.5
+    maxSpawnInterval: 1
+    maxBurstFruits: 0
+    burstInterval: 0
     pointToPass: 20

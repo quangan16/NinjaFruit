@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class Fruits : MonoBehaviour
+
+public class Fruit : MonoBehaviour
 {
     
     [SerializeField] private Rigidbody fruitRb;
@@ -12,6 +14,7 @@ public class Fruits : MonoBehaviour
 
     [SerializeField] private GameObject slicedFruit;
     [SerializeField] private ParticleSystem juiceParticle;
+    [SerializeField] private AudioClip[] slicedSfx;
     public void Awake()
     {
         collider = GetComponent<Collider>();
@@ -25,8 +28,7 @@ public class Fruits : MonoBehaviour
         if (InputManager.Instance.GetSwipeVelocity() >= InputManager.Instance.minSwipeVelocity)
         {
             OnSliced(touchDirection, touchPosition, 6.0f);
-            GameManager.Instance.AddPoint(1);
-            UIManager.Instance.UpdatePoint();
+          
         }
        
     }
@@ -39,6 +41,10 @@ public class Fruits : MonoBehaviour
         slicedFruit.SetActive(true);
         juiceParticle.Play();
         GameManager.Instance.combo++;
+        GameManager.Instance.AddPoint(1);
+        UIManager.Instance.UpdatePoint();
+        int randomSoundSfx = Random.Range(0, 3);
+        SoundManager.Instance.PlaySoundOnce(slicedSfx[randomSoundSfx]);
         if (GameManager.Instance.combo >= 3)
         {
             GameManager.Instance.lastFruitHitPos = transform.position;
@@ -48,28 +54,16 @@ public class Fruits : MonoBehaviour
         float newAngle = Mathf.Atan2(sliceDirection.y, sliceDirection.x) * Mathf.Rad2Deg;
         if (CompareTag("HorizontalSlice"))
         {
-            if ((transform.rotation.eulerAngles.z <= 90 && transform.rotation.eulerAngles.z >= 0) ||
-                (transform.rotation.eulerAngles.z <= 360 &&
-                 transform.rotation.eulerAngles.z >= 270))
-            {
-                fruitRb.transform.rotation = Quaternion.Euler(0, 0
-                    , (newAngle + 180)%180);
-            }
-            else
-            {
-                fruitRb.transform.rotation = Quaternion.Euler(0, 0
-                    , (newAngle - 180) % 180);
-            }
-           
+            fruitRb.transform.rotation = Quaternion.Euler(0, 0
+                , (newAngle));
          
             slicedFruit.transform.SetParent(null);
             Destroy(slicedFruit, 3.0f);
         }
        else if (CompareTag("VerticalSlice"))
         {
-            // Debug.Log("2");
-            Debug.Log(transform.rotation.eulerAngles);
-            slicedFruit.transform.rotation = Quaternion.Euler(0, slicedFruit.transform.localRotation.y + 90, newAngle);
+            slicedFruit.transform.localRotation = Quaternion.Euler(slicedFruit.transform.rotation.eulerAngles.x, slicedFruit.transform.rotation.eulerAngles.y,
+               newAngle );
             slicedFruit.transform.SetParent(null);
             Destroy(slicedFruit, 3.0f);
         }
@@ -94,5 +88,9 @@ public class Fruits : MonoBehaviour
         }
         
     }
-    
+
+    public void OnDestroy()
+    {
+        GameManager.Instance.activeFruits.Remove(this);
+    }
 }

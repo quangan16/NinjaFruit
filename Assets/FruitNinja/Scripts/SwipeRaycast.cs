@@ -23,7 +23,7 @@ public class SwipeRaycast : MonoBehaviour
                 if (hit.collider.CompareTag("HorizontalSlice"))
                 {
                   
-                    if (hit.collider.gameObject.transform.GetChild(0).TryGetComponent(out Fruits fruit))
+                    if (hit.collider.gameObject.transform.GetChild(0).TryGetComponent(out Fruit fruit))
                     {
                     
                         fruit.OnSliced(InputManager.Instance.GetTouchDirectionNomalized(),InputManager.Instance.GetTouchPosition(),6.0f);

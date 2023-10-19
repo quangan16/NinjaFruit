@@ -184,6 +184,10 @@ MonoBehaviour:
   wholeFruit: {fileID: 4962483568548303793}
   slicedFruit: {fileID: 1380611655483897461}
   juiceParticle: {fileID: 9076002657035465652}
+  slicedSfx:
+  - {fileID: 8300000, guid: 4657bf55f4f9303479ee22ab04e8ba8c, type: 3}
+  - {fileID: 8300000, guid: 64f33f2ca1754e442943c54cf1c75448, type: 3}
+  - {fileID: 8300000, guid: ed9af8ce3225c1647a76b3de8d1e79cd, type: 3}
 --- !u!136 &7709768110969407027
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -7,33 +7,34 @@ using Random = UnityEngine.Random;
 
 
 [Serializable]
-public class Spawner : MonoBehaviour
+public abstract class Spawner : MonoBehaviour
 {
    
-    private BoxCollider spawnArea;
-    [SerializeField] private GameObject[] fruitPrefabs;
+    protected BoxCollider spawnArea;
+    [SerializeField] protected GameObject[] fruitPrefabs;
 
 
-    [SerializeField] private float startDelay = 1.5f;
-    [SerializeField] private float minSpawnInterval = 0.5f;
-    [SerializeField] private float maxSpawnInterval = 1.0f;
+    [SerializeField] protected float startDelay = 1.5f;
+    [SerializeField] protected float minSpawnInterval = 0.5f;
+    [SerializeField] protected float maxSpawnInterval = 1.0f;
 
     [Space(10)]
-    [SerializeField] private float minForce = 500.0f;
-    [SerializeField] private float maxForce = 1000.0f;
+    [SerializeField] protected float minForce = 500.0f;
+    [SerializeField] protected float maxForce = 1000.0f;
 
     [Space(10)] 
     [Header("Fruit properties")] 
-    [SerializeField]private float minInitAngle = 5.0f;
-    [SerializeField] private float maxInitAngle = 15.0f;
-    [SerializeField] private float fruitLifetime = 5.0f;
+    [SerializeField]protected float minInitAngle = 5.0f;
+    [SerializeField] protected float maxInitAngle = 15.0f;
+    [SerializeField] protected float fruitLifetime = 5.0f;
 
-    [SerializeField] private int maxBurstFruits = 0;
-    [SerializeField] private float burstInterval = 0;
+    [SerializeField] protected int maxBurstFruits = 0;
+    [SerializeField] protected float burstInterval = 0;
 
-    [SerializeField] private int currentBusrtFruits = 1;
- 
-
+    [SerializeField] protected int currentBusrtFruits = 1;
+    [SerializeField] protected float randomTimeToNextBomb = 0;
+    [SerializeField] protected bool bombAvailable = false;
+    
    
     public void Awake()
     {
@@ -58,56 +59,8 @@ public class Spawner : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public IEnumerator Spawn()
-    {
-        yield return new WaitForSeconds(startDelay);
-        while (enabled)
-        {
-            GameObject fruitPrefab = fruitPrefabs[Random.Range(0, fruitPrefabs.Length)];
-            var spawnPosX = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
-            var spawnPosY = Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y);
-            var spawnPosZ = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z);
-            var intervalTime = Random.Range(minSpawnInterval, maxSpawnInterval);
-            var shootForce = Random.Range(minForce, maxForce);
-            var randomAngleOffset = Random.Range(minInitAngle, maxInitAngle);
-            var initAngle = Quaternion.Euler(fruitPrefab.transform.rotation.eulerAngles.x,
-                fruitPrefab.transform.rotation.eulerAngles.y, CalculateAngles(spawnPosX, randomAngleOffset));
-            // var initAngle = CalculateAngles(spawnPosX);
-            Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, spawnPosZ);
-            if (GameManager.Instance.CurrentMode > SpawnMode.FAST)
-            {
-                if (currentBusrtFruits < maxBurstFruits)
-                {
-                    GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
-                    newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.VelocityChange);
-                    newFruit.GetComponent<Rigidbody>().AddTorque(newFruit.transform.forward * initAngle.z*  shootForce * 3, ForceMode.VelocityChange);
-                    Destroy(newFruit, fruitLifetime);
-                    yield return new WaitForSeconds(burstInterval);
-                    currentBusrtFruits++;
-                }
-                else
-                {
-                    yield return new WaitForSeconds(intervalTime);
-                    currentBusrtFruits = 0;
-                }
-                
-            }
-            else
-            {
-                GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
-                newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.VelocityChange);
-                newFruit.GetComponent<Rigidbody>()
-                    .AddTorque(newFruit.transform.forward * initAngle.z * shootForce * 3, ForceMode.Impulse);
-                Destroy(newFruit, fruitLifetime);
-                yield return new WaitForSeconds(intervalTime);
-            }
-         
-          
-           
-        }
-        yield  break;
-    }
-
+    public abstract IEnumerator Spawn();
+    
     public void OnModeChange(SpawnMode mode)
     {
         StopAllCoroutines();
@@ -115,7 +68,7 @@ public class Spawner : MonoBehaviour
         StartCoroutine(Spawn());
     }
 
-    public void UpdateData()
+    public virtual void UpdateData()
     {
         fruitPrefabs = GameManager.Instance.GetCurrentModeData().fruitPrefabs;
         startDelay = GameManager.Instance.GetCurrentModeData().startDelay;
@@ -148,8 +101,23 @@ public class Spawner : MonoBehaviour
         return angle;
     }
 
-    
-    
+   
+    public IEnumerator UpdateBombTime()
+    {
+        float timeToNextBomb = Random.Range(randomTimeToNextBomb - 5.0f, randomTimeToNextBomb + 5.0f);
+        while (timeToNextBomb > 0.0f)
+        {
+            timeToNextBomb -= Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        bombAvailable = true;
+    }
+
+    public abstract void SpawnBomb();
+
+
+
 }
 
 

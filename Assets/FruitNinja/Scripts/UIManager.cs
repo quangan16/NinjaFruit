@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -8,13 +9,24 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
     
     
-    [SerializeField] private Text pointTxt;
+    [SerializeField] private Text scoreTxt;
+    [SerializeField] private Text bestScoreTxt;
     [SerializeField] private GameObject comboTxtPrefab;
     
     public void Awake()
     {
         SetSingleton();
        
+    }
+
+    public void Start()
+    {
+        Init();
+    }
+
+    public void Init()
+    {
+        bestScoreTxt.text = $"Best:{GameManager.Instance.bestScore}";
     }
 
     public void SetSingleton()
@@ -31,7 +43,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePoint()
     {
-        pointTxt.text = GameManager.Instance.GetCurrentPoint().ToString();
+        scoreTxt.text = GameManager.Instance.GetCurrentPoint().ToString();
     }
 
     public void ShowComboText(int combos)

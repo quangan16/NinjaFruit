@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4435809290504876867}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0074, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4435809290504876867}
-  m_Mesh: {fileID: 7041796342139779082, guid: 45eec244a9b18c04c9bed49fbdd09a3f, type: 3}
+  m_Mesh: {fileID: -5218430524983591951, guid: 45eec244a9b18c04c9bed49fbdd09a3f, type: 3}
 --- !u!23 &6346590686679731723
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +125,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4756892164040113880}
-  m_Mesh: {fileID: 5207968315090710881, guid: 45eec244a9b18c04c9bed49fbdd09a3f, type: 3}
+  m_Mesh: {fileID: -2391948342997716410, guid: 45eec244a9b18c04c9bed49fbdd09a3f, type: 3}
 --- !u!23 &6476650437798419938
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -267,6 +267,10 @@ MonoBehaviour:
   wholeFruit: {fileID: 4435809290504876867}
   slicedFruit: {fileID: 7672316767196337799}
   juiceParticle: {fileID: 6354380171238836295}
+  slicedSfx:
+  - {fileID: 8300000, guid: 775fc8aa3f50e6f469874089417ad879, type: 3}
+  - {fileID: 8300000, guid: 781831ea99fd1594a98a3a13ee739a54, type: 3}
+  - {fileID: 8300000, guid: 193a9adc466359f47bee77e353d95ca3, type: 3}
 --- !u!135 &1868663547524538586
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -279,7 +283,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.018
-  m_Center: {x: 0, y: -0.008, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7672316767196337799
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7672316767196337799}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0074, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -355,7 +359,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8508639565926142525}
-  m_Mesh: {fileID: -5237196414689188675, guid: 45eec244a9b18c04c9bed49fbdd09a3f, type: 3}
+  m_Mesh: {fileID: -3951357845824952772, guid: 45eec244a9b18c04c9bed49fbdd09a3f, type: 3}
 --- !u!23 &2205841512681840308
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -504,63 +508,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1631511862621909197, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.41852084
+      value: 0.17254902
       objectReference: {fileID: 0}
     - target: {fileID: 1631511862621909197, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.79764724
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 1631511862621909197, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9339623
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1631714794348344139, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.41852084
+      value: 0.17254902
       objectReference: {fileID: 0}
     - target: {fileID: 1631714794348344139, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.79764724
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 1631714794348344139, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9339623
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1632291701234097269, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.41852084
+      value: 0.17254902
       objectReference: {fileID: 0}
     - target: {fileID: 1632291701234097269, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.79764724
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 1632291701234097269, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9339623
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1632306636103479221, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.41852084
+      value: 0.17254902
       objectReference: {fileID: 0}
     - target: {fileID: 1632306636103479221, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.79764724
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 1632306636103479221, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9339623
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1632346243912462581, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.41852084
+      value: 0.17350478
       objectReference: {fileID: 0}
     - target: {fileID: 1632346243912462581, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.79764724
+      value: 0.124288
       objectReference: {fileID: 0}
     - target: {fileID: 1632346243912462581, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.9339623
+      value: 0.1981132
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}

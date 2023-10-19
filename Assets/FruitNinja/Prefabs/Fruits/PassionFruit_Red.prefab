@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -3427520115659550343, guid: 45eec244a9b18c04c9bed49fbdd09a3f, type: 3}
+    - target: {fileID: 630710460285808705, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
+      propertyPath: slicedSfx
+      value: 
+      objectReference: {fileID: 8300000, guid: 23ba528610cfe944f89ca8ab4fb5b049, type: 3}
     - target: {fileID: 1868663547524538586, guid: a7600391e0521d841bd7163b47da7a2e, type: 3}
       propertyPath: m_IsTrigger
       value: 1

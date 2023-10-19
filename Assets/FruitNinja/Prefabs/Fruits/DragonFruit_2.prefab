@@ -140,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4281456251380573950}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0117, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -335,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8286337981601477889}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0070999996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -414,6 +414,10 @@ MonoBehaviour:
   wholeFruit: {fileID: 4281456251380573950}
   slicedFruit: {fileID: 8286337981601477889}
   juiceParticle: {fileID: 4642244719448110357}
+  slicedSfx:
+  - {fileID: 8300000, guid: 80658694abd2bc941a7833781077d86e, type: 3}
+  - {fileID: 8300000, guid: 2135d78af2939f64997b89749d0ae2ac, type: 3}
+  - {fileID: 8300000, guid: 07174bcbccaeb8449bbdb1494d8dd75b, type: 3}
 --- !u!136 &515884577977057325
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -469,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1471110098776291739, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0103
+      value: -0.0018000002
       objectReference: {fileID: 0}
     - target: {fileID: 1471110098776291739, guid: ea5cdcd66f8112f428c3af84ae6c97cd, type: 3}
       propertyPath: m_LocalPosition.z
