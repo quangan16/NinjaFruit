@@ -9,6 +9,10 @@ TagManager:
   - VerticalSlice
   - TopSliced
   - BotSliced
+  - Missile
+  - SpawnerBottom
+  - SpawnerLeft
+  - SpawnerRight
   layers:
   - Default
   - TransparentFX
