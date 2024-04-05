@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -17,19 +18,27 @@ public class G80_SuperFruit : MonoBehaviour
     private bool firstTouch = false;
     [SerializeField] private GameObject slicedFruit;
     [SerializeField] private ParticleSystem juiceParticle;
-    [SerializeField] private Vector2 randomCameraTargetPos = Vector2.zero;
+    [SerializeField] private Transform previousPos;
+    [SerializeField] private Transform randomCameraTargetPos;
+    [SerializeField] private Transform currentCameraPos;
+
     [SerializeField] private float circleRadius = 0.01f;
-    
+    [SerializeField] private float zoomMagnitude;
+    [SerializeField] private bool followTarget;
+    [SerializeField] private bool updated = false;
+    [SerializeField] private Vector2 cameraOffset;
+    [SerializeField] private float slowDuration;
+    [SerializeField] private float slowRate;
     public void Awake()
-    {
-        collider = GetComponent<Collider>();
+    {   
+        zoomMagnitude = (collider as SphereCollider).radius / 0.001f;
     }
 
     public void Update()
     {
-        
-        UpdateComboText();
         UpdateRandomPosInsideCircle();
+        CameraFollowTarget(currentCameraPos.position);
+        UpdateComboText();
         
     }
     // Start is called before the first frame update
@@ -59,7 +68,17 @@ public class G80_SuperFruit : MonoBehaviour
         }
         else
         {
+            if (updated == true) updated = false;
             MoveCamTowardTarget();
+        }
+       
+    }
+
+    public void CameraFollowTarget(Vector2 targetPos)
+    {
+        if (followTarget)
+        {
+            G80_GameManager.Instance.MakeCamFollowTarget(targetPos);
         }
        
     }
@@ -80,45 +99,58 @@ public class G80_SuperFruit : MonoBehaviour
 
     public IEnumerator OnFirstSliced()
     {
-       
+        
         firstTouch = true;
+        followTarget = true;
+        DOVirtual.DelayedCall(slowDuration, () => { followTarget = false; });
         float randomAngle = Random.Range(0f, 360.0f);
-        randomCameraTargetPos = (Vector2)transform.position +
+        randomCameraTargetPos.position = (Vector2)transform.localPosition +
                                 new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * circleRadius;
-        StartCoroutine(G80_GameManager.Instance.EnterSlowMotion(0.05f));
-        StartCoroutine(G80_GameManager.Instance.ZoomInCamera(15.0f, gameObject, 0.3f));
+        cameraOffset = (randomCameraTargetPos.position - currentCameraPos.position) * 0.25f;
+        StartCoroutine(G80_GameManager.Instance.EnterSlowMotion(slowDuration, slowRate));
+        StartCoroutine(G80_GameManager.Instance.ZoomInCamera(zoomMagnitude, gameObject, 0.3f, slowDuration));
+        
+       // StartCoroutine(G80_GameManager.Instance.ResetCamera());
      
-      
-      
-
-        yield return new WaitForSecondsRealtime(5.0f);
-        StartCoroutine(G80_GameManager.Instance.ExitSlowMotion());
-       StartCoroutine(G80_GameManager.Instance.ResetCamera());
-      
        
      
       
         yield break;
     }
-
+    
     public void UpdateRandomPosInsideCircle()
     {
        
-        if (Vector2.Distance(G80_GameManager.Instance.CurrentCamPos, transform.position) >
-            circleRadius)
+        if (Vector2.Distance(currentCameraPos.position, transform.position) > circleRadius && updated == false  && firstTouch)
         {
-           
+            previousPos.position = randomCameraTargetPos.position;
             float randomAngle = Random.Range(0f, 360.0f);
-            randomCameraTargetPos =(Vector2)transform.position +  new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * circleRadius;
+            randomCameraTargetPos.position =(Vector2)transform.position +  new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * circleRadius;
+            updated = true;
+            cameraOffset = (randomCameraTargetPos.position - currentCameraPos.position) * 0.25f;
+            
         }
+
+        
     }
 
     public void MoveCamTowardTarget()
     {
         
-        Camera.main.transform.DOMove(Camera.main.transform.position +  new Vector3(randomCameraTargetPos.x , randomCameraTargetPos.y ,
-            0) * 0.4f , 0.05f).SetEase(Ease.OutBack);
+        // currentCameraPos.DOLocalMove( currentCameraPos .position + new Vector3(randomCameraTargetPos.position.x , randomCameraTargetPos.position.y ,
+        //     0) , 0.05f).SetEase(Ease.OutBack);
+        currentCameraPos.DOMove((Vector2)currentCameraPos.position + cameraOffset, 0.1f).SetEase(Ease.OutBack).SetUpdate(true);
     }
-    
-    
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, circleRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(randomCameraTargetPos.position, 20.0f);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(previousPos.position, 15.0f);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(currentCameraPos.position, 25.0f);
+    }
 }

@@ -26,13 +26,13 @@ MonoBehaviour:
     - {fileID: 3829227900248608394, guid: 6966bdbfe62dc984fb3b77867c7c82a9, type: 3}
     - {fileID: 4877754562957024097, guid: be75bb1191826174d9875c809213d19b, type: 3}
     - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
-    - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
+    - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 140
-    maxForce: 160
-    minSideForce: 80
-    maxSideForce: 100
+    minForce: 500
+    maxForce: 700
+    minSideForce: 300
+    maxSideForce: 500
     startDelay: 1.5
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
@@ -54,8 +54,8 @@ MonoBehaviour:
     - {fileID: 5735265990472958152, guid: 2f372fdc11f8acd42817c41164685835, type: 3}
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
-    minForce: 140
-    maxForce: 160
+    minForce: 500
+    maxForce: 700
     minSideForce: 0
     maxSideForce: 0
     startDelay: 2
@@ -80,10 +80,10 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 140
-    maxForce: 160
-    minSideForce: 60
-    maxSideForce: 80
+    minForce: 500
+    maxForce: 700
+    minSideForce: 300
+    maxSideForce: 500
     startDelay: 2
     minSpawnInterval: 2
     maxSpawnInterval: 2.5
@@ -106,10 +106,10 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 140
-    maxForce: 160
-    minSideForce: 100
-    maxSideForce: 120
+    minForce: 500
+    maxForce: 700
+    minSideForce: 300
+    maxSideForce: 500
     startDelay: 2
     minSpawnInterval: 1
     maxSpawnInterval: 1.5
@@ -132,8 +132,8 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 140
-    maxForce: 160
+    minForce: 400
+    maxForce: 600
     minSideForce: 0
     maxSideForce: 0
     startDelay: 2
@@ -158,8 +158,8 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 130
-    maxForce: 150
+    minForce: 300
+    maxForce: 600
     minSideForce: 0
     maxSideForce: 0
     startDelay: 1
@@ -184,10 +184,10 @@ MonoBehaviour:
     - {fileID: 1380611655270835961, guid: 96c6c70a69ff1224794cdc0e5f509760, type: 3}
     - {fileID: 5214950267361033725, guid: 1c86686824ee2044b9b71fcf1029e222, type: 3}
     - {fileID: 1211443915205528294, guid: 6223705310071bf4bbf217a3581c0091, type: 3}
-    minForce: 60
-    maxForce: 80
-    minSideForce: 80
-    maxSideForce: 120
+    minForce: 400
+    maxForce: 800
+    minSideForce: 300
+    maxSideForce: 500
     startDelay: 1.5
     minSpawnInterval: 0.5
     maxSpawnInterval: 1
@@ -199,8 +199,8 @@ MonoBehaviour:
     - {fileID: 72138227290202792, guid: 5f11f23564dc9eb449fe827dd196c39c, type: 3}
     minForce: 0
     maxForce: 0
-    minSideForce: 80
-    maxSideForce: 140
+    minSideForce: 300
+    maxSideForce: 500
     startDelay: 1.5
     minSpawnInterval: 0.5
     maxSpawnInterval: 1

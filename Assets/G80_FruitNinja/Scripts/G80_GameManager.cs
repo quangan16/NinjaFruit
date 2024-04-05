@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using FruitNinja.Scripts;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,11 +13,14 @@ using UnityEngine.UI;
 public class G80_GameManager : MonoBehaviour
 {
 
+    public static bool hasStarted;
+    public delegate void GameStartEvent();
 
+    public static event GameStartEvent onGameStart;
     public static G80_GameManager Instance;
     public SpawnMode CurrentMode;
     public event Action<SpawnMode> OnModeChanged;
-    private float defaultCameraOrthoSize = 30.0f;
+    private float defaultCameraOrthoSize;
     public int score = 0;
     public int progressScore;
     public int bestScore = 0;
@@ -35,8 +39,7 @@ public class G80_GameManager : MonoBehaviour
     public bool inSlowMotion = false;
     public bool isZoomIn = false;
     public List<GameObject> activeFruits;
-  
-
+    
     public Vector3 CurrentCamPos
     {
         get
@@ -50,12 +53,19 @@ public class G80_GameManager : MonoBehaviour
         
     }
 
+    public void StartGame()
+    {
+        hasStarted = true;
+        onGameStart?.Invoke();
+    }
+
     public void Awake()
     {
         Init();
         Application.targetFrameRate = 60;
         QualitySettings.vSyncCount = 0;
-        Physics.gravity = new Vector3(0.0f, -100.0f, 0.0f);
+        defaultCameraOrthoSize = cam.orthographicSize;
+        Physics.gravity = new Vector3(0.0f, -300.0f, 0.0f);
     }
 
     public void OnDestroy()
@@ -73,6 +83,7 @@ public class G80_GameManager : MonoBehaviour
         CurrentMode = SpawnMode.WARMUP;
         bestScore = G80_DataManager.Instance.LoadBestScore();
         targetPoint += modeDataSO.spawnModeData[(int)CurrentMode].pointToPass;
+        hasStarted = false;
     }
 
     public void MakeSingleton()
@@ -104,7 +115,7 @@ public class G80_GameManager : MonoBehaviour
         UpdateModeByPoint();
     }
 
-    public void UpdataBestScore()
+    public void UpdateBestScore()
     {
         if (score > bestScore)
         {
@@ -178,7 +189,7 @@ public class G80_GameManager : MonoBehaviour
         combo = 0;
         comboCountdown = 1.0f;
         check = false;
-        yield break;
+       
     }
 
 
@@ -188,7 +199,7 @@ public class G80_GameManager : MonoBehaviour
     }
 
 
-    public IEnumerator EnterSlowMotion(float targetTimeScale)
+    public IEnumerator EnterSlowMotion(float slowDuration, float targetTimeScale)
     {
         if (inSlowMotion == false)
         {
@@ -196,7 +207,6 @@ public class G80_GameManager : MonoBehaviour
             float elapsedTime = 0.0f;
             float transitionTime = 0.6f;
             float originTimeScale = Time.timeScale;
-            Debug.Log("Slow");
             while (elapsedTime < transitionTime)
             {
                 elapsedTime += Time.unscaledDeltaTime;
@@ -206,6 +216,12 @@ public class G80_GameManager : MonoBehaviour
 
             Time.timeScale = targetTimeScale;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
+            if (slowDuration < 0) yield break;
+            else
+            {
+                yield return new WaitForSecondsRealtime(slowDuration);
+                yield return  ExitSlowMotion();
+            }
         }
        
     }
@@ -230,7 +246,7 @@ public class G80_GameManager : MonoBehaviour
       
     }
 
-    public IEnumerator ZoomInCamera(float targetZoomInSize, GameObject targetObject, float transitionTime)
+    public IEnumerator ZoomInCamera(float targetZoomInSize, GameObject targetObject, float transitionTime, float zoomInDuration = -1)
     {
         if (isZoomIn == false)
         {
@@ -250,6 +266,13 @@ public class G80_GameManager : MonoBehaviour
             cam.orthographicSize = targetZoomInSize;
             cam.transform.position = targetPostion;
             isZoomIn = true;
+            if (zoomInDuration >= 0)
+            {
+                yield return new WaitForSecondsRealtime(zoomInDuration);
+                yield return ResetCamera();
+            }
+                
+            
         }
        
     }
@@ -291,6 +314,14 @@ public class G80_GameManager : MonoBehaviour
         activeFruits.Add(obj);
     }
 
+    public void MakeCamFollowTarget(Vector2 targetPos)
+    {
+        Vector3 target = new Vector3(targetPos.x, targetPos.y, CurrentCamPos.z);
+        
+            cam.transform.position = target;
+
+    }
+
     public void DestroyAllActiveFruits()
     {
         foreach (var fruit in activeFruits)
@@ -301,7 +332,9 @@ public class G80_GameManager : MonoBehaviour
 
     public void OnGameFinish()
     {
-        UpdataBestScore();
+        UpdateBestScore();
     }
+    
+
 
 }

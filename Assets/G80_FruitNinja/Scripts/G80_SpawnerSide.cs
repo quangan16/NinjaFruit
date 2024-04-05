@@ -25,8 +25,8 @@ public class G80_SpawnerSide : G80_Spawner
             var shootForce = Random.Range(sideMinForce, sideMaxForce);
             var randomAngleOffset = Random.Range(minInitAngle, maxInitAngle);
             var initAngle = Quaternion.Euler(fruitPrefab.transform.rotation.eulerAngles.x,
-                fruitPrefab.transform.rotation.eulerAngles.y, CalculateAngles(spawnPosX, randomAngleOffset));
-            // var initAngle = CalculateAngles(spawnPosX);
+                fruitPrefab.transform.rotation.eulerAngles.y, CalculateSpawnAngles(spawnPosX, randomAngleOffset));
+            // var initAngle = CalculateSpawnAngles(spawnPosX);
             Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, spawnPosZ);
             if(shootForce > 0.0f)
             {
@@ -37,12 +37,13 @@ public class G80_SpawnerSide : G80_Spawner
                     yield break;
                     
                 }
-
+                //Burst Mode
                 else if (maxBurstFruits > 0)
                 {
                     if (currentBusrtFruits < maxBurstFruits)
                     {
                         GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
+                        G80_SoundManager.Instance.PlaySoundOnce(G80_SoundManager.Instance.sfx.launchClip);
                         newFruit.GetComponent<Rigidbody>()
                             .AddForce(transform.up * shootForce, ForceMode.VelocityChange);
                         newFruit.GetComponent<Rigidbody>()
@@ -59,12 +60,14 @@ public class G80_SpawnerSide : G80_Spawner
                     }
 
                 }
+                //Normal mode
                 else
                 {
                     GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
+                    G80_SoundManager.Instance.PlaySoundOnce(G80_SoundManager.Instance.sfx.launchClip);
                     newFruit.GetComponent<Rigidbody>().AddForce(transform.up * shootForce, ForceMode.VelocityChange);
                     newFruit.GetComponent<Rigidbody>()
-                        .AddTorque(newFruit.transform.forward * initAngle.z * shootForce * 3, ForceMode.Impulse);
+                        .AddTorque(newFruit.transform.forward * initAngle.z * shootForce * 3, ForceMode.VelocityChange);
                     Destroy(newFruit, fruitLifetime);
                     yield return new WaitForSeconds(intervalTime);
                 }

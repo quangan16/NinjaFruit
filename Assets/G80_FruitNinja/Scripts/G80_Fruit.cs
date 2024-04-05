@@ -35,7 +35,7 @@ public class G80_Fruit : MonoBehaviour
     }
 
 
-    public void OnSliced(Vector3 sliceDirection, Vector3 positionContact, float force)
+    public virtual void OnSliced(Vector3 sliceDirection, Vector3 positionContact, float force)
     {
         fruitRb.GetComponent<Collider>().enabled = false;
         wholeFruit.SetActive(false);
@@ -63,9 +63,8 @@ public class G80_Fruit : MonoBehaviour
             Destroy(slicedFruit, 3.0f);
         }
        else if (CompareTag("VerticalSlice"))
-        {
-            slicedFruit.transform.localRotation = Quaternion.Euler(slicedFruit.transform.rotation.eulerAngles.x, slicedFruit.transform.rotation.eulerAngles.y,
-               newAngle + 90);
+       {
+            slicedFruit.transform.localRotation *= Quaternion.Euler(newAngle + 90, 1, 1);
             slicedFruit.transform.SetParent(null);
             Destroy(slicedFruit, 3.0f);
         }
@@ -79,7 +78,10 @@ public class G80_Fruit : MonoBehaviour
             if (rb.gameObject.CompareTag("TopSliced"))
             {
                 rb.AddRelativeForce(transform.up * 50, ForceMode.VelocityChange);
-                rb.AddRelativeTorque(new Vector3(-600, 0.0f, 0), ForceMode.VelocityChange);
+                if (CompareTag("VerticalSlice"))
+                    rb.AddRelativeTorque(new Vector3(600, 0.0f, 0), ForceMode.VelocityChange);
+                else
+                    rb.AddRelativeTorque(new Vector3(-600, 0.0f, 0), ForceMode.VelocityChange);
             }
 
             else if((rb.gameObject.CompareTag("BotSliced")))
@@ -102,7 +104,7 @@ public class G80_Fruit : MonoBehaviour
        
         splashJuice.transform.position = transform.position - Vector3.forward * transform.position.z;
         splashJuice.gameObject.transform.SetParent(null);
-        splashJuice.gameObject.transform.localScale = Vector3.one * 3.0f;
+        splashJuice.gameObject.transform.localScale = Vector3.one * 25.0f;
        
     }
 }

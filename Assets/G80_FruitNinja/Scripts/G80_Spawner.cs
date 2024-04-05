@@ -46,11 +46,22 @@ public abstract class G80_Spawner : MonoBehaviour
     
     public virtual void Start()
     {
-        G80_GameManager.Instance.OnModeChanged += OnModeChange;
+
         UpdateData();
-        StartCoroutine(Spawn());
+        G80_GameManager.Instance.OnModeChanged += OnModeChange;
      
 
+    }
+
+    public void OnEnable()
+    {
+        
+        G80_GameManager.onGameStart += onStart;
+
+        void onStart()
+        {
+            StartCoroutine(Spawn());
+        }
     }
 
     public void OnDisable()
@@ -67,7 +78,7 @@ public abstract class G80_Spawner : MonoBehaviour
     
     public virtual void OnModeChange(SpawnMode mode)
     {
-       StopAllCoroutines();
+        StopAllCoroutines();
         UpdateData();
         StartCoroutine(Spawn());
       
@@ -86,16 +97,16 @@ public abstract class G80_Spawner : MonoBehaviour
     }
     
    
-    public float CalculateAngles(float spawnPosX, float randomOffset)
+    public float CalculateSpawnAngles(float spawnPosX, float randomOffset)
     {
         float angle;
-        if (spawnPosX < 0)
+        if (spawnPosX < spawnArea.bounds.min.x * 0.3)
         {
-            angle = Random.Range(0.0f, spawnPosX - randomOffset);
+            angle = Random.Range(0.0f, 0 - randomOffset);
         }
-        else if (spawnPosX > 0)
+        else if (spawnPosX > spawnArea.bounds.max.x * 0.3)
         {
-            angle = Random.Range(0.0f, spawnPosX + randomOffset);
+            angle = Random.Range(0.0f, 0 + randomOffset);
         }
         else
         {
@@ -107,23 +118,7 @@ public abstract class G80_Spawner : MonoBehaviour
     }
 
    
-    public virtual IEnumerator UpdateBombTime()
-    {
-        Debug.Log("Hello");
-       
-        {
-            bombAvailable = false;
-            float timeToNextBomb = Random.Range(randomTimeToNextBomb - 3.0f, randomTimeToNextBomb + 3.0f);
-            while (timeToNextBomb > 0.0f)
-            {
-                timeToNextBomb -= Time.unscaledDeltaTime;
-                yield return null;
-            }
-
-            bombAvailable = true;
-        }
-      
-    }
+   
 
     public abstract IEnumerator SpawnBomb();
 

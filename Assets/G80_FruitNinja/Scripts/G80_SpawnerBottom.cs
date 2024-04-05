@@ -41,8 +41,8 @@ public class G80_SpawnerBottom : G80_Spawner
             var shootForce = Random.Range(minForce, maxForce);
             var randomAngleOffset = Random.Range(minInitAngle, maxInitAngle);
             var initAngle = Quaternion.Euler(fruitPrefab.transform.rotation.eulerAngles.x,
-                fruitPrefab.transform.rotation.eulerAngles.y, CalculateAngles(spawnPosX, randomAngleOffset));
-            // var initAngle = CalculateAngles(spawnPosX);
+                fruitPrefab.transform.rotation.eulerAngles.y, CalculateSpawnAngles(spawnPosX, randomAngleOffset));
+            // var initAngle = CalculateSpawnAngles(spawnPosX);
             Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, spawnPosZ);
             
             //burstMode
@@ -51,6 +51,7 @@ public class G80_SpawnerBottom : G80_Spawner
                 if (currentBusrtFruits < maxBurstFruits)
                 {
                     GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
+                    G80_SoundManager.Instance.PlaySoundOnce(G80_SoundManager.Instance.sfx.launchClip);
                     G80_GameManager.Instance.AddObjectToActiveList(newFruit);
                     newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.VelocityChange);
                     newFruit.GetComponent<Rigidbody>().AddTorque(newFruit.transform.forward * initAngle.z*  shootForce * 1, ForceMode.VelocityChange);
@@ -67,7 +68,7 @@ public class G80_SpawnerBottom : G80_Spawner
                             newBomb.GetComponent<Rigidbody>()
                                 .AddForce(newBomb.transform.up * shootForce, ForceMode.VelocityChange);
                             newBomb.GetComponent<Rigidbody>()
-                                .AddTorque(newBomb.transform.forward * initAngle.z * shootForce * 2,
+                                .AddTorque(newBomb.transform.forward * initAngle.z * shootForce,
                                     ForceMode.VelocityChange);
                             Destroy(newBomb, 4.0f);
                             
@@ -91,9 +92,10 @@ public class G80_SpawnerBottom : G80_Spawner
             {
                 GameObject newFruit = Instantiate(fruitPrefab, spawnPos, initAngle);
                 G80_GameManager.Instance.AddObjectToActiveList(newFruit);
+                G80_SoundManager.Instance.PlaySoundOnce(G80_SoundManager.Instance.sfx.launchClip);
                 newFruit.GetComponent<Rigidbody>().AddForce(newFruit.transform.up * shootForce, ForceMode.VelocityChange);
-                newFruit.GetComponent<Rigidbody>()
-                    .AddTorque(newFruit.transform.forward * initAngle.z * shootForce * 2, ForceMode.Impulse);
+                // newFruit.GetComponent<Rigidbody>()
+                //     .AddTorque(newFruit.transform.forward * initAngle.z * shootForce * 2, ForceMode.Impulse);
                 Destroy(newFruit, fruitLifetime);
                 if (bombAvailable)
                 {
@@ -127,15 +129,15 @@ public class G80_SpawnerBottom : G80_Spawner
             var shootForce = Random.Range(minForce, maxForce);
             var randomAngleOffset = Random.Range(minInitAngle, maxInitAngle);
             var initAngle = Quaternion.Euler(bombPrefabs.transform.rotation.eulerAngles.x,
-                bombPrefabs.transform.rotation.eulerAngles.y, CalculateAngles(spawnPosX, randomAngleOffset));
-            // var initAngle = CalculateAngles(spawnPosX);
+                bombPrefabs.transform.rotation.eulerAngles.y, CalculateSpawnAngles(spawnPosX, randomAngleOffset));
+            // var initAngle = CalculateSpawnAngles(spawnPosX);
             Vector3 spawnPos = new Vector3(spawnPosX, spawnPosY, spawnPosZ);
             Instantiate(bombPrefabs, spawnPos, Quaternion.identity);
             
             GameObject newBomb = Instantiate(bombPrefabs, spawnPos, initAngle);
             G80_GameManager.Instance.AddObjectToActiveList(newBomb);
             newBomb.GetComponent<Rigidbody>()
-                .AddForce(newBomb.transform.up * shootForce * 2, ForceMode.VelocityChange);
+                .AddForce(newBomb.transform.up * shootForce * 0, ForceMode.Impulse);
             // newBomb.GetComponent<Rigidbody>()
             //     .AddTorque(newBomb.transform.forward * initAngle.z * shootForce ,
             //         ForceMode.VelocityChange);
@@ -144,7 +146,23 @@ public class G80_SpawnerBottom : G80_Spawner
         }
         
     }
-
+    
+     public virtual IEnumerator UpdateBombTime()
+        {
+           
+            {
+                bombAvailable = false;
+                float timeToNextBomb = Random.Range(randomTimeToNextBomb - 3.0f, randomTimeToNextBomb + 3.0f);
+                while (timeToNextBomb > 0.0f)
+                {
+                    timeToNextBomb -= Time.unscaledDeltaTime;
+                    yield return null;
+                }
+    
+                bombAvailable = true;
+            }
+          
+        }
    
     
 }
